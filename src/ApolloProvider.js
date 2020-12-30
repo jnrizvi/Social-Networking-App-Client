@@ -8,7 +8,6 @@ import { setContext } from 'apollo-link-context'
 
 // pointing to our graphql server
 const httpLink = createHttpLink({
-    // uri: 'http://localhost:5000'
     uri: 'https://sleepy-basin-26199.herokuapp.com/'
 })
 
@@ -25,34 +24,6 @@ const authLink = setContext(() => {
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
-    // onError: (e) => { console.log(e) }
-    // cache: new InMemoryCache({
-    //     typePolicies: {
-    //         Query: {
-    //             fields: {
-    //                 getPosts: {
-    //                     merge(existing = [], incoming: []) {
-    //                         return incoming;
-    //                     }
-    //                 }
-    //             }
-    //         },
-    //         Post: {
-    //             fields: {
-    //                 likes: {
-    //                     merge(existing = [], incoming: []) {
-    //                         return incoming;
-    //                     }
-    //                 },
-    //                 comments: {
-    //                     merge(existing = [], incoming: []) {
-    //                         return incoming;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // })
 });
 
 export default (
